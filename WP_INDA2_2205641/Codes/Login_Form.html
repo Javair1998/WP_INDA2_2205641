@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al and Al's Sportswear - Login</title>
+    <link rel="stylesheet" href="Store_CSS.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="index.html">Home</a>
+        <a href="Product_Page.html">Products</a>
+        <a href="Cart_Page.html">Cart</a>
+        <a href="Invoice_Page.html">Invoice</a>
+        <a href="About_Us.html">About Us</a>
+    </div>
+
+    <img src="../Assets/Logo.png" alt="Al and Al's Sportswear Logo" class="logo">
+    <h1>Login to Al and Al's Sportswear</h1>
+    <p class="slogan">Al Sport Matter</p>
+    
+    <form id="loginForm">
+        <label for="username">Username*:</label>
+        <input type="text" id="username" placeholder="Enter username" required>
+
+        <label for="password">Password*:</label>
+        <input type="password" id="password" placeholder="Enter password" minlength="8" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="loginStatus"></p>
+    <p>Don't have an account? <a href="Sign_Up_Page.html">Create an Account</a></p>
+
+    <div class="footer">
+        <p>&copy; 2024 Al and Al's Sportswear | <a href="Reference_Page.html">References</a> | <a href="About_Us.html">About Us</a></p>
+    </div>
+
+    <script>
+        const storedUsername = 'user123';
+        const storedPassword = 'password123';
+        let attempts = 0;
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === storedUsername && password === storedPassword) {
+                window.location.href = 'Product_Page.html';
+            } else {
+                attempts++;
+                document.getElementById('loginStatus').innerText = `Login failed. Attempts: ${attempts}`;
+                if (attempts >= 3) {
+                    window.location.href = 'Error_Page.html';
+                }
+            }
+        });
+    </script>
+
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+
+        document.addEventListener('mousemove', function(event) {
+            if (event.clientX < 100) {
+                sidebar.classList.add('visible');
+            } else {
+                sidebar.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

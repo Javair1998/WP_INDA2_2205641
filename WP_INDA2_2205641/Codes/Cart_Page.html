@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al and Al's Sportswear - Cart</title>
+    <link rel="stylesheet" href="Store_CSS.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="index.html">Home</a>
+        <a href="Product_Page.html">Products</a>
+        <a href="Cart_Page.html">Cart</a>
+        <a href="Invoice_Page.html">Invoice</a>
+        <a href="About_Us.html">About Us</a>
+    </div>
+
+    <img src="../Assets/Logo.png" alt="Al and Al's Sportswear Logo" class="logo">
+    <h1>Your Cart</h1>
+    <p class="slogan">Al Sport Matter</p>
+    
+    <div id="cartDetails" class="cart-details"></div>
+    <div class="nav-options">
+        <button onclick="checkout()">Proceed to Checkout</button>
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="window.close()">Exit</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Al and Al's Sportswear | <a href="Reference_Page.html">References</a> | <a href="About_Us.html">About Us</a></p>
+    </div>
+
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartHtml = '';
+
+        if (cart.length > 0) {
+            cart.forEach(item => {
+                cartHtml += `<p>${item.name}: $${item.price}</p>`;
+            });
+            cartHtml += `<p>Total: $${cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2)}</p>`;
+        } else {
+            cartHtml = '<p>Your cart is empty.</p>';
+        }
+
+        document.getElementById('cartDetails').innerHTML = cartHtml;
+
+        function checkout() {
+            window.location.href = 'Invoice_Page.html';
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            window.location.reload();
+        }
+    </script>
+
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+
+        document.addEventListener('mousemove', function(event) {
+            if (event.clientX < 100) {
+                sidebar.classList.add('visible');
+            } else {
+                sidebar.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

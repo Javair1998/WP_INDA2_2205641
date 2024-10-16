@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al and Al's Sportswear - Invoice</title>
+    <link rel="stylesheet" href="Store_CSS.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="index.html">Home</a>
+        <a href="Product_Page.html">Products</a>
+        <a href="Cart_Page.html">Cart</a>
+        <a href="Invoice_Page.html">Invoice</a>
+        <a href="About_Us.html">About Us</a>
+    </div>
+
+    <img src="../Assets/Logo.png" alt="Al and Al's Sportswear Logo" class="logo">
+    <h1>Invoice</h1>
+    <p class="slogan">Al Sport Matter</p>
+    <div class="invoice-page" style="text-align: center;">
+        <p id="invoiceDetails"></p>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="window.print()">Print Invoice</button>
+        <button onclick="window.close()">Exit</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Al and Al's Sportswear | <a href="Reference_Page.html">References</a> | <a href="About_Us.html">About Us</a></p>
+    </div>
+
+    <script>
+        const products = JSON.parse(localStorage.getItem('cart'));
+        let invoiceHtml = '';
+
+        if (products) {
+            products.forEach(product => {
+                invoiceHtml += `<p>${product.name}: $${product.price}</p>`;
+            });
+            invoiceHtml += `<p>Total: $${products.reduce((total, product) => total + parseFloat(product.price), 0).toFixed(2)}</p>`;
+        } else {
+            invoiceHtml = '<p>No items in cart.</p>';
+        }
+
+        document.getElementById('invoiceDetails').innerHTML = invoiceHtml;
+    </script>
+
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+
+        document.addEventListener('mousemove', function(event) {
+            if (event.clientX < 100) {
+                sidebar.classList.add('visible');
+            } else {
+                sidebar.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

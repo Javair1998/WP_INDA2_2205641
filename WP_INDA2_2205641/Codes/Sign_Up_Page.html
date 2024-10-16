@@ -1,0 +1,78 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al and Al's Sportswear - Sign Up</title>
+    <link rel="stylesheet" href="Store_CSS.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="index.html">Home</a>
+        <a href="Product_Page.html">Products</a>
+        <a href="Cart_Page.html">Cart</a>
+        <a href="Invoice_Page.html">Invoice</a>
+        <a href="About_Us.html">About Us</a>
+    </div>
+
+    <img src="../Assets/Logo.png" alt="Al and Al's Sportswear Logo" class="logo">
+    <h1>Create Your Account</h1>
+    <p class="slogan">Al Sport Matter</p>
+
+    <form id="signupForm">
+        <label for="fullName">Full Name*:</label>
+        <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+        <label for="email">Email*:</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="newUsername">Username*:</label>
+        <input type="text" id="newUsername" placeholder="Create a username" required>
+
+        <label for="newPassword">Password*:</label>
+        <input type="password" id="newPassword" placeholder="Create a password" minlength="8" required>
+
+        <label for="confirmPassword">Confirm Password*:</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm your password" minlength="8" required>
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <p id="signupStatus"></p>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+
+    <div class="footer">
+        <p>&copy; 2024 Al and Al's Sportswear | <a href="Reference_Page.html">References</a> | <a href="About_Us.html">About Us</a></p>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password === confirmPassword) {
+                alert(`Account created successfully for ${username}!`);
+                window.location.href = 'login.html';
+            } else {
+                document.getElementById('signupStatus').innerText = 'Passwords do not match. Please try again.';
+            }
+        });
+    </script>
+
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+
+        document.addEventListener('mousemove', function(event) {
+            if (event.clientX < 100) {
+                sidebar.classList.add('visible');
+            } else {
+                sidebar.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

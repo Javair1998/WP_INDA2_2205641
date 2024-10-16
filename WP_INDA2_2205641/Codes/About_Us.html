@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Al and Al's Sportswear</title>
+    <link rel="stylesheet" href="Store_CSS.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="index.html">Home</a>
+        <a href="Product_Page.html">Products</a>
+        <a href="Cart_Page.html">Cart</a>
+        <a href="Invoice_Page.html">Invoice</a>
+        <a href="About_Us.html">About Us</a>
+    </div>
+
+    <img src="../Assets/Logo.png" alt="Al and Al's Sportswear Logo" class="logo">
+    <h1>About Us</h1>
+    <p class="slogan">Al Sport Matter</p>
+
+    <section class="about-section" style="text-align: center;">
+        <p>Welcome to Al and Al's Sportswear. We are committed to providing the best quality sportswear for fans of top football clubs around the world.</p>
+        <p>We offer a wide range of jerseys, football boots, socks, and gloves from top brands such as Nike, Adidas, and Puma.</p>
+        <p>At Al and Al's Sportswear, we believe that sport is more than just a game; it’s a lifestyle. That's why we bring you only the best gear.</p>
+        <p>Established in 2024, founded by Aljermaine Hutchinson, a Third Year Student at the University of Technology, Jamaica.</p>
+    </section>
+
+    <section class="contact-info" style="text-align: center;">
+        <p>Full Name: Aljermaine Dennis Junior Hutchinson</p>
+        <p>ID#: 2205641</p>
+        <p>Email: <a href="mailto:aljermainehutchinson@gmail.com">aljermainehutchinson@gmail.com</a></p>
+        <p>Email: <a href="mailto:aljermainedhutchinson@students.utech.edu.jm">aljermainedhutchinson@students.utech.edu.jm</a></p>
+        <p>Module Code: CIT2011</p>
+        <p>Module Name: Web Programming</p>
+        <p>Assignment Name: Individual Assignment #2</p>
+        <p>Class: Wednesday 6:00 PM - 9:00 PM (Tutorial)</p>
+    </section>
+
+    <div class="footer">
+        <p>&copy; 2024 Al and Al's Sportswear | <a href="Reference_Page.html">References</a> | <a href="About_Us.html">About Us</a></p>
+    </div>
+
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+
+        document.addEventListener('mousemove', function(event) {
+            if (event.clientX < 100) {
+                sidebar.classList.add('visible');
+            } else {
+                sidebar.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
